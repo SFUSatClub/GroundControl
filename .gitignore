@@ -17,3 +17,13 @@
 /yarn-error.log
 
 .byebug_history
+=======
+*~
+.vagrant
+
+*.pyc
+*.sqite3
+
+Gemfile.lock
+log/*
+.bundle
