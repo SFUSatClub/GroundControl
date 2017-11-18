@@ -79,6 +79,18 @@ execute 'create databases and migrate' do
   user 'ubuntu'
 end
 
+execute 'run rake job' do
+  command 'rake fetch_api:seed_db'
+  cwd '/home/ubuntu/project/'
+  user 'ubuntu'
+end
+
+execute 'add whenever job to cron' do
+  command 'whenever --update-crontab'
+  cwd '/home/ubuntu/project/'
+  user 'ubuntu'
+end
+
 execute 'start server' do
   command 'rails s -d -b 0.0.0.0'
   cwd '/home/ubuntu/project/'
