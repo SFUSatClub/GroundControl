@@ -1,7 +1,3 @@
 body
-  p
-    | Current user is:
-    =< @user.name
-  p
-    | Email:
-    =< @user.email
+  p Current user is: #{current_user.name}
+  p Email: #{current_user.email}

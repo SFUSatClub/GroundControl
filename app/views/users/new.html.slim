@@ -1,21 +1,22 @@
-.container
-  = provide(:title, 'Sign up')
+- if current_user.nil?
+  .container
+    .col-md-6.col-md-offset-3
+      h1 Sign Up
+      = form_for(@user) do |f|
+        = render 'shared/error_messages'
+        .form-group
+          = f.label :name
+          = f.text_field :name, class: "form-control"
+        .form-group
+          = f.label :email
+          = f.email_field :email, class: "form-control"
+        .form-group
+          = f.label :password
+          = f.password_field :password, class: "form-control"
+        .form-group
+          = f.label :password_confirmation, "Confirmation"
+          = f.password_field :password_confirmation, class: "form-control"
 
-  .col-md-6.col-md-offset-3
-    h1 Sign Up
-    = form_for(@user) do |f|
-      = render 'shared/error_messages'
-      .form-group
-        = f.label :name
-        = f.text_field :name, class: "form-control"
-      .form-group
-        = f.label :email
-        = f.email_field :email, class: "form-control"
-      .form-group
-        = f.label :password
-        = f.password_field :password, class: "form-control"
-      .form-group
-        = f.label :password_confirmation, "Confirmation"
-        = f.password_field :password_confirmation, class: "form-control"
-
-      = f.submit "Create Account", class: "btn btn-primary pull-right"
+        = f.submit "Create Account", class: "btn btn-primary pull-right"
+- else
+  = redirect_to user_path(current_user)
