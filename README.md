@@ -18,7 +18,6 @@ The user be able to see the selected satellites on a map.
 Each category of satellites contains a list currently tracked by NORAD.
 
 This list is obtained from:
-https://www.celestrak.com/NORAD/elements - automatic!
 [Celestrak](https://www.celestrak.com/NORAD/elements)
 
 NORAD provides their data in a line separated txt format.
