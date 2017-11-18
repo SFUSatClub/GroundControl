@@ -32,6 +32,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'slim'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'whenever', :require => false
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
