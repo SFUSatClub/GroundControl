@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
   def new
+    if !current_user.nil?
+      redirect_to current_user
+    end
   end
 
   def create
@@ -16,12 +19,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-  end
-
-  private
-
-  def session_params
-    params.permit :email, :password
+    log_out
+    redirect_to root_url
   end
 
 end

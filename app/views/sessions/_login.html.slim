@@ -1,14 +1,14 @@
-.row
-  .col-md-12
+.container
+  .col-md-6.col-md-offset-3
+    h1 Sign In
     = form_for(:session, url: login_path) do |f|
-      .input-group
-        .form-group
-          = f.label :email
-          = f.email_field :email, class: 'form-control'
-      .input-group
-        .form-group
-          = f.label :password
-          = f.password_field :password, class: 'form-control'
+      .form-group
+        = f.label :email
+        = f.email_field :email, class: 'form-control'
+      .form-group
+        = f.label :password
+        = f.password_field :password, class: 'form-control'
+
       br
       = f.submit "Log In", class: 'btn btn-primary'
   .col-md-12.bottom.text-center
