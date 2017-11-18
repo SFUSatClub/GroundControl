@@ -69,15 +69,15 @@ execute 'bundle' do
   user 'ubuntu'
 end
 
-execute 'create postgres user' do
-  command 'sudo -u postgres createuser ubuntu -s'
-end
+#execute 'create postgres user' do
+#  command 'sudo -u postgres createuser ubuntu -s'
+#end
 
-execute 'create databases and migrate' do
-  command 'rake db:drop db:create db:migrate'
-  cwd '/home/ubuntu/project/'
-  user 'ubuntu'
-end
+#execute 'create databases and migrate' do
+#  command 'rake db:drop db:create db:migrate'
+#  cwd '/home/ubuntu/project/'
+#  user 'ubuntu'
+#end
 
 execute 'run rake job' do
   command 'rake fetch_api:seed_db'
