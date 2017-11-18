@@ -1,4 +1,4 @@
-#About
+# About  
 
 SFU Sattelite Tracker App is a webapp that enables users to sign up and
 create a personalized list of satellites. Users can choose from a range
@@ -13,7 +13,7 @@ of categories such as:
 
 The user be able to see the selected satellites on a map.
 
-#Background
+# Background  
 
 Each category of satellites contains a list currently tracked by NORAD.
 
@@ -22,32 +22,32 @@ https://www.celestrak.com/NORAD/elements - automatic!
 [Celestrak](https://www.celestrak.com/NORAD/elements)
 
 NORAD provides their data in a line separated txt format.
-Each satellite is displayed using three lines.
+Each satellite is displayed using three lines.  
 
-`NOAA 1 [-]`              
-`1 04793U 70106A   17321.26389674 -.00000039  00000-0  41132-4 0  9994`
-`2 04793 101.7843  25.5071 0031568 323.0510  79.0946 12.53982828148349`
+`NOAA 1 [-]`  
+`1 04793U 70106A   17321.26389674 -.00000039  00000-0  41132-4 0  9994`  
+`2 04793 101.7843  25.5071 0031568 323.0510  79.0946 12.53982828148349`  
 
 The first line is the name and the second and third lines are [TLE](https://spaceflight.nasa.gov/realdata/sightings/SSapplications/Post/JavaSSOP/SSOP_Help/tle_def.html) records.
 These records can be converted to gps coordinates.
 
-#Implementation
+# Implementation  
 
-##GPS Data for the frontend
+## GPS Data for the frontend  
 
 Conversion from TLE to GPS Coordinates is done at the frontend.
 This conversion is done using a javascript library and takes the current unix time as inputs and combines this with the TLE parameters to predict the Coordinates to a certain level of accuracy up to 24 hours.
 After 24 hours it is required to get new TLE values to maintain accuracy.
 
-##Users
+## Users  
 
 Users that have signed up to the app can choose their satellite from a menu of categories or search for the satellite name in a search bar.
 
-##Backend
+## Backend  
 
 On the Backend there is a Rails rake task running that will fetch new data from the NORAD txt files and write these to the database every 24 hours.
 
-#Current development
+# Current development  
 
 * Database tables created and populated with test TLE data.
 * Rake task to automate daily updates has been created.
@@ -55,7 +55,7 @@ On the Backend there is a Rails rake task running that will fetch new data from 
 * TLE to GPS coordinates libary has been tested and is working.
 * Users signup functionality completed.
 
-##Current UI designs
+## Current UI designs  
 
 ![alt text](https://csil-git1.cs.surrey.sfu.ca/mhzhao/CMPT470Project/uploads/14edcc5cce5fd1b8ce26e67241f7a622/image.png "user menu")
 
@@ -65,7 +65,7 @@ On the Backend there is a Rails rake task running that will fetch new data from 
 
 ![alt text](https://csil-git1.cs.surrey.sfu.ca/mhzhao/CMPT470Project/uploads/19b5ff64f8a06adf012f750b2f52f69e/image.png "User Dashboard V2")
 
-#Further development
+# Further development  
 
 * Enable Rake task to write to database.
 * Make proper connections between user model and satellite model so that user's list can be recorded.
