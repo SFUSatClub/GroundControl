@@ -16,13 +16,10 @@ namespace :fetch_api do
     }
 
     groupsats.each { |satrecord|
-
     # add each record to database 0 = name, 1 = TLE 1, 2 = TLE 2
-
       p satrecord[0]
       p satrecord[1]
       p satrecord[2]
-
     }
 
 
