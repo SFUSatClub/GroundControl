@@ -8,6 +8,8 @@ namespace :fetch_api do
     contents.gsub!(/\r\n?/, "\n")
     data = contents.split("\n")
     # data is now saved into data array, accessed 3 elements at a time
+    p data
+
   end
 
   def load_requirements
