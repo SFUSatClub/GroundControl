@@ -57,18 +57,6 @@ end
 
 # database Configuraion
 
-# execute 'create database' do
-#   command 'rake db:create RAILS_ENV=production'
-#   cwd '/home/ubuntu/project'
-#   user 'ubuntu'
-# end
-
-# execute 'migration' do
-#   command 'rake db:migrate RAILS_ENV=production'
-#   cwd '/home/ubuntu/project'
-#   user 'ubuntu'
-# end
-
 execute 'run rake job' do
   command 'RAILS_ENV=production rake fetch_api:seed_db'
   cwd '/home/ubuntu/project/'
@@ -81,38 +69,54 @@ execute 'add whenever job to cron' do
   user 'ubuntu'
 end
 
+execute 'migration' do
+  command 'RAILS_ENV=production rake db:migrate'
+  cwd '/home/ubuntu/project'
+  user 'ubuntu'
+end
+
+execute 'precompile asset' do
+  command 'RAILS_ENV=production rake assets:precompile'
+  cwd '/home/ubuntu/project/'
+  user 'ubuntu'
+end
+
+
 # unicorn Configuration
 
 execute 'install unicorn' do
   command 'gem install unicorn --conservative'
 end
 
-cookbook_file "unicorn" do
- path "/etc/init.d/unicorn"
+cookbook_file "unicorn_CMPT470Project" do
+ path "/etc/init.d/unicorn_CMPT470Project"
 end
 
-file '/etc/init.d/unicorn' do
+file '/etc/init.d/unicorn_CMPT470Project' do
   mode '0755'
   owner 'ubuntu'
 end
 
-
-# start up unicorn
-
-execute 'unicorn_rails' do
-  command 'sudo update-rc.d unicorn defaults'
-end
-
-service 'unicorn' do
-  action :start
-end
-
-# nginx Server Configuration
+# Nginx Server Configuration
 
 package 'nginx'
 cookbook_file "nginx-default" do
   path "/etc/nginx/sites-available/default"
 end
+
+
+# start up unicorn
+
+execute 'unicorn_CMPT470Project' do
+  command 'sudo update-rc.d unicorn_CMPT470Project defaults'
+end
+
+
+service 'unicorn_CMPT470Project' do
+  action :start
+end
+
+# reload nginx
 
 service "nginx" do
   action :restart

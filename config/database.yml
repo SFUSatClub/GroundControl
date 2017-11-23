@@ -101,3 +101,6 @@ production:
   # The TCP port the server listens on. Defaults to 5432.
   # If your server runs on a different port number, change accordingly.
   port: 5432
+  #
+  # database: mydb
+  # username: ubuntu

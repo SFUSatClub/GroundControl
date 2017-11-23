@@ -16,7 +16,7 @@ USAGE="Usage: $0 <start|stop|restart|upgrade|rotate|force-stop>"
 
 # app settings
 USER="ubuntu"
-# APP_NAME="CMPT470Project"
+APP_NAME="CMPT470Project"
 APP_ROOT="/home/$USER/project"
 ENV="production"
 
