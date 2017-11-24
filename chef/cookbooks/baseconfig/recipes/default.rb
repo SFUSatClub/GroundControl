@@ -8,6 +8,7 @@ end
 
 # Base configuration recipe in Chef.
 package "wget"
+package "curl"
 package "ntp"
 cookbook_file "ntp.conf" do
   path "/etc/ntp.conf"
@@ -16,83 +17,113 @@ execute 'ntp_restart' do
   command 'service ntp restart'
 end
 
-# Rails setup
-package "ruby-dev"
-package "zlib1g-dev"
-package "nodejs"
-package "git-core"
-package "curl"
-package "zlib1g-dev"
-package "build-essential"
-package "libssl-dev"
-package "libreadline-dev"
-package "libyaml-dev"
-package "libsqlite3-dev"
-package "sqlite3"
-package "libxml2-dev"
-package "libxslt1-dev"
-package "libcurl4-openssl-dev"
-package "python-software-properties"
-package "libffi-dev"
-package "nodejs"
-package "libgdbm-dev"
-package "libncurses5-dev"
-package "automake"
-package "libtool"
-package "bison"
-package "libffi-dev"
-package "postgresql"
-package "postgresql-contrib"
-package "libpq-dev"
+    # My Configuration
 
-execute 'install ruby' do
-  command 'gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3'
-  command 'curl -sSL https://get.rvm.io | bash -s stable'
-  command 'source ~/.rvm/scripts/rvm'
-  command 'rvm install 2.4.2'
-  command 'rvm use 2.4.2 --default'
-  command 'ruby -v'
-end
+# PostgreSQL Configuration
 
-execute 'get bundler' do
+package 'postgresql'
+package 'postgresql-contrib'
+package 'libpq-dev'
+
+# execute "create postgres user" do
+#   ignore_failure true
+#   command 'sudo -u postgres createuser ubuntu -s'
+# end
+
+# Ruby Configuration
+package 'build-essential'
+package 'ruby-full'
+package 'nodejs'
+package 'libxslt1-dev'
+package 'libxml2-dev'
+
+
+execute 'install bundle' do
   command 'gem install bundler --conservative'
 end
 
-execute 'get rails' do
-  command 'gem install rails -v 5.1.4'
-  command 'sudo echo "gem: --no-ri --no-rdoc" > ~/.gemrc'
+# rails Configuration
+
+execute 'install rails' do
+  command 'gem install rails -- --use-system-libraries --with-xml2-include=/usr/include/libxml2 --with-xml2-lib=/usr/lib/ --conservative'
 end
 
-execute 'bundle' do
+# final bundle update
+execute 'update bundle' do
   command 'bundle install'
-  cwd '/home/ubuntu/project/'
+  cwd '/home/ubuntu/project'
   user 'ubuntu'
 end
 
-#execute 'create postgres user' do
-#  command 'sudo -u postgres createuser ubuntu -s'
-#end
-
-#execute 'create databases and migrate' do
-#  command 'rake db:drop db:create db:migrate'
-#  cwd '/home/ubuntu/project/'
-#  user 'ubuntu'
-#end
+# database Configuraion
 
 execute 'run rake job' do
-  command 'rake fetch_api:seed_db'
+  command 'RAILS_ENV=production rake fetch_api:seed_db'
   cwd '/home/ubuntu/project/'
   user 'ubuntu'
 end
 
 execute 'add whenever job to cron' do
-  command 'whenever --update-crontab'
+  command 'RAILS_ENV=production whenever --update-crontab'
   cwd '/home/ubuntu/project/'
   user 'ubuntu'
 end
 
-execute 'start server' do
-  command 'rails s -d -b 0.0.0.0'
+execute 'migration' do
+  command 'RAILS_ENV=production rake db:migrate'
+  cwd '/home/ubuntu/project'
+  user 'ubuntu'
+end
+
+execute 'precompile asset' do
+  command 'RAILS_ENV=production rake assets:precompile'
   cwd '/home/ubuntu/project/'
   user 'ubuntu'
 end
+
+
+# unicorn Configuration
+
+execute 'install unicorn' do
+  command 'gem install unicorn --conservative'
+end
+
+cookbook_file "unicorn_CMPT470Project" do
+ path "/etc/init.d/unicorn_CMPT470Project"
+end
+
+file '/etc/init.d/unicorn_CMPT470Project' do
+  mode '0755'
+  owner 'ubuntu'
+end
+
+# Nginx Server Configuration
+
+package 'nginx'
+cookbook_file "nginx-default" do
+  path "/etc/nginx/sites-available/default"
+end
+
+
+# start up unicorn
+
+execute 'unicorn_CMPT470Project' do
+  command 'sudo update-rc.d unicorn_CMPT470Project defaults'
+end
+
+
+service 'unicorn_CMPT470Project' do
+  action :start
+end
+
+# reload nginx
+
+service "nginx" do
+  action :restart
+end
+
+#execute 'start server' do
+#  command 'rails s -d -b 0.0.0.0'
+#  cwd '/home/ubuntu/project/'
+#  user 'ubuntu'
+#end
