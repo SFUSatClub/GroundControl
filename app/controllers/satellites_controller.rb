@@ -1,7 +1,5 @@
 class SatellitesController < ApplicationController
-
-    def index
-      @satellites = Satellite.all
-    end
-
+  def index
+    @satellites = Satellite.all
+  end
 end

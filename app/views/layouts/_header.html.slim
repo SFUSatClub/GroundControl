@@ -1,48 +1,47 @@
-nav.navbar.navbar-expand-lg.navbar-light.bg-light
-  nav.navbar.navbar-default
-  .container-fluid
-    /! Brand and toggle get grouped for better mobile display
-    .navbar-header
-      button.navbar-toggle.collapsed aria-expanded="false" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"
-        span.sr-only Toggle navigation
-        span.glyphicon.glyphicon-menu-hamburger
-      a.navbar-brand href="/"  470 Project
-    /! Collect the nav links, forms, and other content for toggling
-    #bs-example-navbar-collapse-1.collapse.navbar-collapse
-      ul.nav.navbar-nav
-        li
-          / page to be added
-          a href="#"  Commands
+.header-box
+  nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    nav.navbar.navbar-default
+    .container-fluid
+      /! Brand and toggle get grouped for better mobile display
+      .navbar-header
+        button.navbar-toggle.collapsed aria-expanded="false" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"
+          span.sr-only Toggle navigation
+          span.glyphicon.glyphicon-menu-hamburger
+        a.navbar-brand href="/"  470 Project
+      /! Collect the nav links, forms, and other content for toggling
+      #bs-example-navbar-collapse-1.collapse.navbar-collapse
+        ul.nav.navbar-nav
+          li
+            / page to be added
+            a href="#"  Commands
 
-      / For user login or displaying current user
-      ul.nav.navbar-nav.navbar-right
-        li
-          - if current_user.nil?
-            / user not logged in
-            a href="#{login_path}" Login
-          - else
-            / user logged in
-            /p Hello, #{link_to current_user.name, user_path(current_user)}
-            /= link_to "Log Out", logout_path, method: :delete
-            li.dropdown
-              a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+        / For user login or displaying current user
+        ul.nav.navbar-nav.navbar-right
+          li
+            - if current_user.nil?
+              / user not logged in
+              a href="#{login_path}" Login
+            - else
+              / user logged in
+              li.dropdown
+                a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+                  span> #{current_user.name}
+                  small
+                    span.glyphicon.glyphicon-triangle-bottom
+                ul#login-menu.dropdown-menu
+                  li
+                    a href="#{user_path(current_user)}"  Profile
+                  li.divider role="separator"
+                  li
+                    = link_to "Log Out", logout_path, method: :delete
 
-                small
-                  span.glyphicon.glyphicon-triangle-bottom
-              ul#login-menu.dropdown-menu
-                li
+    / .col-md-6
+    /   .log-in-container
+    /     = form_for(:session, url: login_path, html: {class: 'form-inline'}) do |f|
+    /       = f.label :email
+    /       = f.email_field :email, class: 'form-control'
 
-                li.divider role="separator"
-                li
-                  = link_to "Log Out", logout_path, method: :delete
-
-  / .col-md-6
-  /   .log-in-container
-  /     = form_for(:session, url: login_path, html: {class: 'form-inline'}) do |f|
-  /       = f.label :email
-  /       = f.email_field :email, class: 'form-control'
-
-  /       = f.label :password
-  /       = f.password_field :password, class: 'form-control'
-.clearfix
-hr
+    /       = f.label :password
+    /       = f.password_field :password, class: 'form-control'
+  .clearfix
+  hr
