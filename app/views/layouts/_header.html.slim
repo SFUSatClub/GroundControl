@@ -24,17 +24,17 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
             / user logged in
             /p Hello, #{link_to current_user.name, user_path(current_user)}
             /= link_to "Log Out", logout_path, method: :delete
-          li.dropdown
-            a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+            li.dropdown
+              a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
 
-              small
-                span.glyphicon.glyphicon-triangle-bottom
-            ul#login-menu.dropdown-menu
-              li
-                
-              li.divider role="separator"
-              li
-                = link_to "Log Out", logout_path, method: :delete
+                small
+                  span.glyphicon.glyphicon-triangle-bottom
+              ul#login-menu.dropdown-menu
+                li
+
+                li.divider role="separator"
+                li
+                  = link_to "Log Out", logout_path, method: :delete
 
   / .col-md-6
   /   .log-in-container
