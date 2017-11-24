@@ -12,7 +12,7 @@ module CMPT470Project
     config.load_defaults 5.1
 
     # config.web_console.whiny_requests = true
-    # config.web_console.whitelisted_ips = '0.0.0.0'
+    config.web_console.whitelisted_ips = '10.0.2.2'
     # config.web_console.whiny_requests = false
 
     # Settings in config/environments/* take precedence over those specified here.
