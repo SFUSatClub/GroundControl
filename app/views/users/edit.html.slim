@@ -1,0 +1,22 @@
+table.table.table-hover
+  tr
+    th Favorite
+    th Name
+    th Category
+    th TLE1
+    th TLE2
+  = form_for @user do |f|
+    = f.fields_for :preferences do |pref|
+      - @satellites.each do |sat|
+        tr
+          td
+            = pref.check_box(sat.id)
+          td
+            = sat.name
+          td
+            = sat.category
+          td
+            = sat.tle1
+          td
+            = sat.tle2
+    = f.submit

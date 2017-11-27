@@ -18,9 +18,31 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+    @satellites = Satellite.all
+  end
+
+  def update
+    @user = current_user
+    @user.update user_params
+    notice = "You have updated your favorites."
+    flash[:notice] = "#{notice}"
+    redirect_back(fallback_location: root_path)
+
+
+    # if @user.update user_params
+    #   notice = "You have updated your favorites."
+    #   flash[:notice] = "#{notice}"
+    #   redirect_back(fallback_location: root_path)
+    # else
+    #   render :edit
+    # end
+  end
+
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :preferences => {})
     end
 end
