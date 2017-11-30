@@ -82,25 +82,25 @@ namespace :fetch_api do
         get_category_link_contents(sat,"Special-Interest Satellites")
     end
 
-    # weathersats.each do |sat|
-    #     get_category_link_contents(sat,"Weather & Earth Resources Satellites")
-    # end
-    #
-    # commsats.each do |sat|
-    #     get_category_link_contents(sat,"Communications Satellites")
-    # end
-    #
-    # navsats.each do |sat|
-    #     get_category_link_contents(sat,"Navigation Satellites")
-    # end
-    #
-    # sciencesats.each do |sat|
-    #     get_category_link_contents(sat,"Scientific Satellites")
-    # end
-    #
-    # miscsats.each do |sat|
-    #     get_category_link_contents(sat,"Miscellaneous Satellites")
-    # end
+    weathersats.each do |sat|
+        get_category_link_contents(sat,"Weather & Earth Resources Satellites")
+    end
+
+    commsats.each do |sat|
+        get_category_link_contents(sat,"Communications Satellites")
+    end
+
+    navsats.each do |sat|
+        get_category_link_contents(sat,"Navigation Satellites")
+    end
+
+    sciencesats.each do |sat|
+        get_category_link_contents(sat,"Scientific Satellites")
+    end
+
+    miscsats.each do |sat|
+        get_category_link_contents(sat,"Miscellaneous Satellites")
+    end
 
     end_time = Time.now
     duration = (start_time - end_time) / 1.minute
@@ -111,16 +111,25 @@ namespace :fetch_api do
 
 
   def load_requirements
-    require 'open-uri'
+    # require 'open-uri'
+    require 'rest-client'
   end
 
 
   def get_category_link_contents(link, category)
 
-    file = open(link)
+    # file = open(link)
+    response = RestClient.get link
 
-    begin
-      contents = file.read
+    p category
+    p link
+
+    if response.code != 200
+      p "error", "response code", response.code
+    else
+      p "response code", response.code
+
+      contents = response.body
       contents.gsub!(/\r\n?/, "\n")
       data = contents.split("\n")
 
@@ -133,15 +142,30 @@ namespace :fetch_api do
       groupsats.each { |satrecord|
       # add each record to database 0 = name, 1 = TLE 1, 2 = TLE 2
         # p category
+        # p satrecord
         storein_db(satrecord,category)
       }
-    ensure
-      file.close
     end
 
-
-    p link
-
+    # begin
+    #   contents = file.read
+    #   contents.gsub!(/\r\n?/, "\n")
+    #   data = contents.split("\n")
+    #
+    #   groupsats = Array.new
+    #
+    #   data.each_slice(3){ |onesat|
+    #     groupsats << onesat
+    #   }
+    #
+    #   groupsats.each { |satrecord|
+    #   # add each record to database 0 = name, 1 = TLE 1, 2 = TLE 2
+    #     # p category
+    #     storein_db(satrecord,category)
+    #   }
+    # ensure
+    #   file.close
+    # end
 
   end
 
