@@ -1,6 +1,7 @@
 namespace :fetch_api do
 
   desc 'Seed the database API data from NORAD'
+
   task :seed_db => :environment do
     load_requirements
 
@@ -8,6 +9,8 @@ namespace :fetch_api do
     start_time = Time.now
     # sat_count = Satellites.count
     log.info "Task started at #{start_time}"
+
+    $batchsats = Array.new
 
     #######################################################################
     ################     HARD CODED LINKS FROM NORAD     ##################
@@ -78,29 +81,40 @@ namespace :fetch_api do
     ################   END OF HARD CODED LINKS FROM NORAD #################
     #######################################################################
 
+    p "fetching specialsats ..."
     specialsats.each do |sat|
         get_category_link_contents(sat,"Special-Interest Satellites")
     end
-
+    p "fetching weathersats ..."
     weathersats.each do |sat|
         get_category_link_contents(sat,"Weather & Earth Resources Satellites")
     end
-
+    p "fetching commsats ..."
     commsats.each do |sat|
         get_category_link_contents(sat,"Communications Satellites")
     end
-
+    p "fetching navsats ..."
     navsats.each do |sat|
         get_category_link_contents(sat,"Navigation Satellites")
     end
-
+    p "fetching sciencesats ..."
     sciencesats.each do |sat|
         get_category_link_contents(sat,"Scientific Satellites")
     end
-
-    miscsats.each do |sat|
-        get_category_link_contents(sat,"Miscellaneous Satellites")
+    p "fetching miscsats ..."
+    miscsats.each do |listsat|
+        get_category_link_contents(listsat,"Miscellaneous Satellites")
     end
+
+    p "finished fetching ..."
+    p "writing to db ..."
+
+    $batchsats.each do |sat|
+      storein_db sat
+    end
+
+    p "finished writing to db ..."
+
 
     end_time = Time.now
     duration = (start_time - end_time) / 1.minute
@@ -121,13 +135,13 @@ namespace :fetch_api do
     # file = open(link)
     response = RestClient.get link
 
-    p category
-    p link
+    # p category
+    # p link
 
     if response.code != 200
       p "error", "response code", response.code
     else
-      p "response code", response.code
+      # p "response code", response.code
 
       contents = response.body
       contents.gsub!(/\r\n?/, "\n")
@@ -139,12 +153,24 @@ namespace :fetch_api do
         groupsats << onesat
       }
 
+
+
+
       groupsats.each { |satrecord|
       # add each record to database 0 = name, 1 = TLE 1, 2 = TLE 2
         # p category
         # p satrecord
-        storein_db(satrecord,category)
+
+        satrecord << category
+####append all records in global variable, which will be written to db
+        $batchsats << satrecord
+
+
       }
+
+
+
+
     end
 
     # begin
@@ -169,13 +195,14 @@ namespace :fetch_api do
 
   end
 
-  def storein_db(records, category)
+  def storein_db(records)
     # p records[0]
     # p records[1]
     # p records[2]
+    # p records[3]
     # p category
     # Satellite.find_or_create_by(name: records[0])
     # p Satellite.create(name: records[0], category: 'Navigation Satellites', tle1: records[1], tle2: records[2])
-    Satellite.find_or_create_by(name: records[0], category: category, tle1: records[1], tle2: records[2])
+    Satellite.find_or_create_by(name: records[0], category: records[3], tle1: records[1], tle2: records[2])
   end
 end
