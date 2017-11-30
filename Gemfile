@@ -34,6 +34,13 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'whenever', :require => false
 
+# Used by scraper
+gem 'http-cookie', '< 2.0'
+gem 'mime-types', '< 3.0'
+gem 'netrc', '~> 0.7'
+gem 'rest-client', '~> 1.8.0'
+
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'bootstrap-sass', '~> 3.3.7'
