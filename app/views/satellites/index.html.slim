@@ -1,4 +1,12 @@
-h1 All Satellites
+- if current_user.nil?
+  .alert.alert-info role="alert"
+    | Did you know you can filter your favorite satellites? #{link_to "Login", login_path} or #{link_to "Register", new_user_path} to add them to your favorites!
+
+h2 All Satellites
+- if current_user.present?
+  = link_to edit_user_path(current_user), class: 'btn btn-info pull-right' do
+    span.glyphicon.glyphicon-pencil
+    |  Edit Favorites
 
 table.table.table-hover
   tr

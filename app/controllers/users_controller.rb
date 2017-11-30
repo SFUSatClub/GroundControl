@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_action :skip_password_attribute, only: :update
+
   def new
     @user = User.new
   end
@@ -18,9 +21,34 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+    @satellites = Satellite.all
+  end
+
+  def update
+    @user = User.find(params[:id])
+    params[:user].delete(:password) if params[:user][:password].blank?
+    if  @user.update user_params
+      notice = "You have updated your favorites."
+      flash[:notice] = "#{notice}"
+      redirect_back(fallback_location: root_path)
+    else
+      flash[:warning] = "Something went wrong, we could not save your preferences."
+      render :edit
+    end
+  end
+
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :preferences => {})
     end
+
+    def skip_password_attribute
+      if params[:password].blank? && params[:password_confirmation].blank?
+        params.except(:password, :password_confirmation)
+      end
+    end
+
 end
