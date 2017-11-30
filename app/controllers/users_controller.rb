@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_action :skip_password_attribute, only: :update
+
   def new
     @user = User.new
   end
@@ -24,7 +27,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = current_user
+    @user = User.find(params[:id])
+    params[:user].delete(:password) if params[:user][:password].blank?
+    byebug
     @user.update user_params
     notice = "You have updated your favorites."
     flash[:notice] = "#{notice}"
@@ -45,4 +50,11 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :preferences => {})
     end
+
+    def skip_password_attribute
+      if params[:password].blank? && params[:password_confirmation].blank?
+        params.except(:password, :password_confirmation)
+      end
+    end
+
 end
