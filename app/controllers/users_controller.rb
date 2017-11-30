@@ -23,6 +23,9 @@ class UsersController < ApplicationController
 
   def map
   	@user = User.find(params[:id])
+    respond_to do |format|
+      format.html {render :file => "./app/views/users/index2.html"}
+    end
   end
 
   def edit
