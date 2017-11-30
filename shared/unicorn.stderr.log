@@ -1,0 +1,9 @@
+I, [2017-11-30T03:00:39.860205 #24916]  INFO -- : Refreshing Gem list
+I, [2017-11-30T03:00:45.505496 #24916]  INFO -- : listening on addr=/tmp/unicorn.sock fd=12
+I, [2017-11-30T03:00:45.505685 #24916]  INFO -- : worker=0 spawning...
+I, [2017-11-30T03:00:45.506896 #24916]  INFO -- : worker=1 spawning...
+I, [2017-11-30T03:00:45.508711 #24916]  INFO -- : master process ready
+I, [2017-11-30T03:00:45.508879 #24919]  INFO -- : worker=0 spawned pid=24919
+I, [2017-11-30T03:00:45.511242 #24919]  INFO -- : worker=0 ready
+I, [2017-11-30T03:00:45.509617 #24922]  INFO -- : worker=1 spawned pid=24922
+I, [2017-11-30T03:00:45.513718 #24922]  INFO -- : worker=1 ready
