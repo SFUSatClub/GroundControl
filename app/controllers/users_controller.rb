@@ -21,6 +21,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def map
+  	@user = User.find(params[:id])
+  end
+
   def edit
     @user = User.find(params[:id])
     @satellites = Satellite.all
