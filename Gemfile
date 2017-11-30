@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record
@@ -34,16 +33,12 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'whenever', :require => false
 
-# Used by scraper
-gem 'http-cookie', '< 2.0'
-gem 'mime-types', '< 3.0'
-gem 'netrc', '~> 0.7'
-gem 'rest-client', '~> 1.8.0'
-
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'bootstrap-sass', '~> 3.3.7'
+
+# Used by scraper
+gem 'rest-client', '~> 2.0.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
