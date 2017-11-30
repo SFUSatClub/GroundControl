@@ -29,7 +29,6 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     params[:user].delete(:password) if params[:user][:password].blank?
-    byebug
     @user.update user_params
     notice = "You have updated your favorites."
     flash[:notice] = "#{notice}"

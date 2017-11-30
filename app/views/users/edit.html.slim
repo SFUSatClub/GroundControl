@@ -10,7 +10,7 @@ table.table.table-hover
       - @satellites.each do |sat|
         tr
           td
-            = pref.check_box(sat.id)
+            = pref.check_box(sat.id, {checked: @user.preferences[sat.id.to_s] == "1"})
           td
             = sat.name
           td
