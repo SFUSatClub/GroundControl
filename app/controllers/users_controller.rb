@@ -70,7 +70,7 @@ class UsersController < ApplicationController
     end
 
     def validate_url
-      unless params[:id].to_i == current_user.id.to_i
+      unless current_user.nil? || params[:id].to_i == current_user.id.to_i
         render :file => 'public/422.html'
       end
     end
