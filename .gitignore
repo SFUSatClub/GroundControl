@@ -15,8 +15,17 @@
 
 /node_modules
 /yarn-error.log
+<<<<<<< HEAD
 /public/assets/*
 /shared/*
+=======
+/public/asset/*
+/shared/unicorn.pid
+/shared/unicorn.stderr.log
+
+/assets/.sprockets*
+shared/unicorn.stderr.log
+>>>>>>> origin/master
 
 .byebug_history
 =======
