@@ -11,6 +11,8 @@ $(document).ready(function() {
           WE.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
             attribution: '© OpenStreetMap contributors'
           }).addTo(map);
+
   var marker = WE.marker([51.5, -0.1]).addTo(map);
-  marker.bindPopup('<b>Hello world!</b>');      
+  marker.bindPopup('<b>Hello world!</b>');
+
 });
