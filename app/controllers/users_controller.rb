@@ -1,13 +1,14 @@
 class UsersController < ApplicationController
 
   before_action :skip_password_attribute, only: :update
+  before_action :validate_url
 
   def new
     @user = User.new
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def create
@@ -22,12 +23,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
     @satellites = Satellite.all
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     params[:user].delete(:password) if params[:user][:password].blank?
     if  @user.update user_params
       notice = "You have updated your favorites."
@@ -48,6 +49,12 @@ class UsersController < ApplicationController
     def skip_password_attribute
       if params[:password].blank? && params[:password_confirmation].blank?
         params.except(:password, :password_confirmation)
+      end
+    end
+
+    def validate_url
+      unless params[:id].to_i == current_user.id.to_i
+        render :file => 'public/422.html'
       end
     end
 
