@@ -17,7 +17,6 @@
 /yarn-error.log
 
 /assets/.sprockets*
-shared/unicorn.pid
 shared/unicorn.stderr.log
 
 .byebug_history
