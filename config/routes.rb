@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   # for temporary static pages
   get  'static_pages/home'
+  
   # for user login/logout
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
