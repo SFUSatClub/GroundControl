@@ -16,7 +16,7 @@
 /node_modules
 /yarn-error.log
 /public/assets/*
-/public/shared/*
+/shared/*
 
 .byebug_history
 =======
