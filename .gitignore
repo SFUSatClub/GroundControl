@@ -19,6 +19,12 @@
 /public/assets/*
 /shared/*
 
+
+shared/unicorn.pid
+shared/unicorn.stderr.log
+
+
+
 .byebug_history
 
 *~
