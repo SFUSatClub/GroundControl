@@ -17,11 +17,9 @@
 /yarn-error.log
 
 /public/assets/*
-/shared/*
 
-
-shared/unicorn.pid
-shared/unicorn.stderr.log
+/shared/unicorn.pid
+/shared/unicorn.stderr.log
 
 
 
