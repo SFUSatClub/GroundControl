@@ -24,6 +24,7 @@ class UsersController < ApplicationController
 
   def map
   	@user = User.find(params[:id])
+  	response.headers["Access-Control-Allow-Origin"] = "*";
   	args = "Hello, world!"
   	#@satellites.each do |sat|
   	#  if @user.preferences[sat.id.to_s] == "1"
