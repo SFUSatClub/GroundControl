@@ -55,6 +55,11 @@ execute 'update bundle' do
   user 'ubuntu'
 end
 
+execute 'get_js' do
+  command 'rails g gmaps4rails:copy_coffee'
+end
+
+
 # database Configuraion
 
 execute 'run rake job' do
