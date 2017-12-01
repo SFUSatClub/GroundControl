@@ -8,19 +8,23 @@ h2 All Satellites
     span.glyphicon.glyphicon-pencil
     |  Edit Favorites
 
-table.table.table-hover
+table.table.table-hover.satellites-table
   tr
     th Name
     th Category
-    th TLE1
-    th TLE2
+    th.hide-cell TLE1
+    th.hide-cell TLE2
+    th Longitude
+    th Latitude
   - @satellites.each do |satellite|
     tr
-      td
+      td.satellite-name
         = satellite.name
-      td
+      td.satellite-category
         = satellite.category
-      td
+      td.satellite-tle1.hide-cell
         = satellite.tle1
-      td
+      td.satellite-tle2.hide-cell
         = satellite.tle2
+      td.sat-longitude
+      td.sat-latitude

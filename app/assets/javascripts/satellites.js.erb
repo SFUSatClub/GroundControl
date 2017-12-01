@@ -1,0 +1,39 @@
+$(document).ready(function() {
+
+  var d = new Date();
+  var n = d.getTime();
+
+  timeSinceTleEpochMinutes = n/60000;
+
+  $(".satellites-table > tbody > tr").each(function(index, item)
+  {
+    var tleLine1 = $(item).find(".satellite-tle1").text();
+    var tleLine2 = $(item).find(".satellite-tle2").text();
+
+    if (tleLine1.length != 0 && tleLine2.length != 0)
+    {
+      // Initialize a satellite record
+      var satrec = satellite.twoline2satrec(tleLine1, tleLine2);
+
+      //  Or you can use a JavaScript Date
+      var positionAndVelocity = satellite.propagate(satrec, new Date());
+
+      // The position_velocity result is a key-value pair of ECI coordinates.
+      // These are the base results from which all other coordinates are derived.
+      var positionEci = positionAndVelocity.position,
+      velocityEci = positionAndVelocity.velocity;
+
+      // You will need GMST for some of the coordinate transforms.
+      // http://en.wikipedia.org/wiki/Sidereal_time#Definition
+      var gmst = satellite.gstimeFromDate(new Date());
+
+      var positionGd   = satellite.eciToGeodetic(positionEci, gmst);
+
+      var longitude = positionGd.longitude;
+      var latitude  = positionGd.latitude;
+
+      $(item).find('.sat-longitude').text(longitude);
+      $(item).find('.sat-latitude').text(latitude);
+    }
+  });
+})
