@@ -40,3 +40,12 @@ I, [2017-12-01T17:09:16.912855 #2487]  INFO -- : worker=1 ready
 D, [2017-12-01T17:12:16.769912 #2481] DEBUG -- : waiting 16.0s after suspend/hibernation
 D, [2017-12-01T17:12:56.556365 #2481] DEBUG -- : waiting 16.0s after suspend/hibernation
 D, [2017-12-01T17:15:06.854996 #2481] DEBUG -- : waiting 16.0s after suspend/hibernation
+I, [2017-12-01T17:46:51.494267 #25750]  INFO -- : Refreshing Gem list
+I, [2017-12-01T17:46:59.130329 #25750]  INFO -- : listening on addr=/tmp/unicorn.sock fd=12
+I, [2017-12-01T17:46:59.130559 #25750]  INFO -- : worker=0 spawning...
+I, [2017-12-01T17:46:59.131711 #25750]  INFO -- : worker=1 spawning...
+I, [2017-12-01T17:46:59.133423 #25750]  INFO -- : master process ready
+I, [2017-12-01T17:46:59.132292 #25753]  INFO -- : worker=0 spawned pid=25753
+I, [2017-12-01T17:46:59.135277 #25753]  INFO -- : worker=0 ready
+I, [2017-12-01T17:46:59.134024 #25756]  INFO -- : worker=1 spawned pid=25756
+I, [2017-12-01T17:46:59.138286 #25756]  INFO -- : worker=1 ready
