@@ -37,8 +37,7 @@ package 'nodejs'
 package 'libxslt1-dev'
 package 'libxml2-dev'
 
-
-execute 'install bundle' do
+execute 'install bundler' do
   command 'gem install bundler --conservative'
 end
 
@@ -57,11 +56,11 @@ end
 
 # database Configuraion
 
-execute 'run rake job' do
-  command 'RAILS_ENV=production rake fetch_api:seed_db'
-  cwd '/home/ubuntu/project/'
-  user 'ubuntu'
-end
+# execute 'run rake job' do
+#   command 'RAILS_ENV=production rake fetch_api:seed_db'
+#   cwd '/home/ubuntu/project/'
+#   user 'ubuntu'
+# end
 
 execute 'add whenever job to cron' do
   command 'RAILS_ENV=production whenever --update-crontab'
