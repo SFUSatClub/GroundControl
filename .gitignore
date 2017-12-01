@@ -15,15 +15,16 @@
 
 /node_modules
 /yarn-error.log
-/public/asset/*
+
+/public/assets/*
+
 /shared/unicorn.pid
 /shared/unicorn.stderr.log
 
-/assets/.sprockets*
-shared/unicorn.stderr.log
+
 
 .byebug_history
-=======
+
 *~
 .vagrant
 

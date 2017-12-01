@@ -7,3 +7,36 @@ I, [2017-12-01T05:13:47.929012 #24894]  INFO -- : worker=0 spawned pid=24894
 I, [2017-12-01T05:13:47.931794 #24894]  INFO -- : worker=0 ready
 I, [2017-12-01T05:13:47.929526 #24896]  INFO -- : worker=1 spawned pid=24896
 I, [2017-12-01T05:13:47.935843 #24896]  INFO -- : worker=1 ready
+I, [2017-12-01T13:15:08.879849 #24885]  INFO -- : Refreshing Gem list
+I, [2017-12-01T13:15:17.869490 #24885]  INFO -- : listening on addr=/tmp/unicorn.sock fd=12
+I, [2017-12-01T13:15:17.869715 #24885]  INFO -- : worker=0 spawning...
+I, [2017-12-01T13:15:17.870907 #24885]  INFO -- : worker=1 spawning...
+I, [2017-12-01T13:15:17.872983 #24885]  INFO -- : master process ready
+I, [2017-12-01T13:15:17.871609 #24888]  INFO -- : worker=0 spawned pid=24888
+I, [2017-12-01T13:15:17.874690 #24888]  INFO -- : worker=0 ready
+I, [2017-12-01T13:15:17.873731 #24891]  INFO -- : worker=1 spawned pid=24891
+I, [2017-12-01T13:15:17.877250 #24891]  INFO -- : worker=1 ready
+I, [2017-12-01T17:02:21.876027 #25775]  INFO -- : Refreshing Gem list
+I, [2017-12-01T17:02:28.251795 #25775]  INFO -- : listening on addr=/tmp/unicorn.sock fd=12
+I, [2017-12-01T17:02:28.252178 #25775]  INFO -- : worker=0 spawning...
+I, [2017-12-01T17:02:28.253899 #25775]  INFO -- : worker=1 spawning...
+I, [2017-12-01T17:02:28.256784 #25775]  INFO -- : master process ready
+I, [2017-12-01T17:02:28.254969 #25778]  INFO -- : worker=0 spawned pid=25778
+I, [2017-12-01T17:02:28.260220 #25778]  INFO -- : worker=0 ready
+I, [2017-12-01T17:02:28.261972 #25781]  INFO -- : worker=1 spawned pid=25781
+I, [2017-12-01T17:02:28.265015 #25781]  INFO -- : worker=1 ready
+I, [2017-12-01T17:05:35.837925 #25775]  INFO -- : reaped #<Process::Status: pid 25778 exit 0> worker=0
+I, [2017-12-01T17:05:35.838386 #25775]  INFO -- : reaped #<Process::Status: pid 25781 exit 0> worker=1
+I, [2017-12-01T17:05:35.838541 #25775]  INFO -- : master complete
+I, [2017-12-01T17:09:08.604002 #2481]  INFO -- : Refreshing Gem list
+I, [2017-12-01T17:09:16.903060 #2481]  INFO -- : listening on addr=/tmp/unicorn.sock fd=12
+I, [2017-12-01T17:09:16.903285 #2481]  INFO -- : worker=0 spawning...
+I, [2017-12-01T17:09:16.904761 #2481]  INFO -- : worker=1 spawning...
+I, [2017-12-01T17:09:16.906454 #2481]  INFO -- : master process ready
+I, [2017-12-01T17:09:16.905387 #2484]  INFO -- : worker=0 spawned pid=2484
+I, [2017-12-01T17:09:16.908764 #2484]  INFO -- : worker=0 ready
+I, [2017-12-01T17:09:16.906987 #2487]  INFO -- : worker=1 spawned pid=2487
+I, [2017-12-01T17:09:16.912855 #2487]  INFO -- : worker=1 ready
+D, [2017-12-01T17:12:16.769912 #2481] DEBUG -- : waiting 16.0s after suspend/hibernation
+D, [2017-12-01T17:12:56.556365 #2481] DEBUG -- : waiting 16.0s after suspend/hibernation
+D, [2017-12-01T17:15:06.854996 #2481] DEBUG -- : waiting 16.0s after suspend/hibernation
