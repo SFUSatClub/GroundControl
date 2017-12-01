@@ -19,6 +19,9 @@
 /shared/unicorn.pid
 /shared/unicorn.stderr.log
 
+/assets/.sprockets*
+shared/unicorn.stderr.log
+
 .byebug_history
 =======
 *~
