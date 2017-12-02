@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
   def map
   	@user = User.find(params[:id])
-  	response.headers["Access-Control-Allow-Origin"] = "*";
+  	@satellites = Satellite.all
   	args = "Hello, world!"
   	#@satellites.each do |sat|
   	#  if @user.preferences[sat.id.to_s] == "1"
@@ -74,6 +74,15 @@ class UsersController < ApplicationController
       unless current_user.nil? || params[:id].to_i == current_user.id.to_i
         render :file => 'public/422.html'
       end
+    end
+    
+    def satellites_from_prefs
+      query = <<-SQL
+        select *
+        from satellites
+        where user.preferences[sat.id.to_s] = '1'
+      SQL
+      self.find_by_sql(query)
     end
 
 end

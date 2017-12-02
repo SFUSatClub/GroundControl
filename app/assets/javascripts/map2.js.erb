@@ -11,26 +11,48 @@ $(document).ready(function() {
           WE.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
             attribution: '© OpenStreetMap contributors'
           }).addTo(map);
+  var marker = WE.marker([51.5, -0.1]).addTo(map);
+  marker.bindPopup('<b>Hello world!</b>');
+  var i = 0;
+  $(".satellites-table > tbody > tr").each(function(index, item)
+  {
+    var tleLine1 = $(item).find(".satellite-tle1").text();
+    var tleLine2 = $(item).find(".satellite-tle2").text();
+    console.log(tleLine1);
 
-          $(item).find('test_div').text("hello testing");
+    if (tleLine1.length != 0 && tleLine2.length != 0)
+    {
+      // Initialize a satellite record
+      var satrec = satellite.twoline2satrec(tleLine1, tleLine2);
 
+      //  Or you can use a JavaScript Date
+      var positionAndVelocity = satellite.propagate(satrec, new Date());
 
+      // The position_velocity result is a key-value pair of ECI coordinates.
+      // These are the base results from which all other coordinates are derived.
+      var positionEci = positionAndVelocity.position,
+      velocityEci = positionAndVelocity.velocity;
 
-          $(".satellites-table > tbody > tr").each(function(index, item)
-          {
-            // var lat = $(item).find(".sat-latitude").text();
-            // var lon = $(item).find(".sat-longitude").text();
-            // var name = $(item).find(".satellite-name").text();
-            // var marker = WE.marker([parseInt(lat, 10), parseInt(lon, 10)]).addTo(map);
-            // marker.bindPopup(name);
+      // You will need GMST for some of the coordinate transforms.
+      // http://en.wikipedia.org/wiki/Sidereal_time#Definition
+      var gmst = satellite.gstimeFromDate(new Date());
 
+      var positionGd   = satellite.eciToGeodetic(positionEci, gmst);
 
+      var longitude = positionGd.longitude;
+      var latitude  = positionGd.latitude;
+      
+      $(item).find('.sat-longitude').text(longitude);
+      $(item).find('.sat-latitude').text(latitude);
 
-            $(item).find('test_div').text("i_rann_once");
-
-          });
-
-          // var marker = WE.marker([51.5, -0.1]).addTo(map);
-          // marker.bindPopup('<b>Hello world!</b>');
-
+		var name = $(item).find(".satellite-name").text();
+		var marker = WE.marker([latitude, longitude]).addTo(map);
+		marker.bindPopup(name);
+		i++;
+		if (i == 2) {
+			// Equivalent to a break statement in the context of ".each"
+			return false;
+		}
+	}
+  });
 });
