@@ -25,19 +25,6 @@ class UsersController < ApplicationController
   def map
   	@user = User.find(params[:id])
   	@satellites = Satellite.all
-  	args = "Hello, world!"
-  	#@satellites.each do |sat|
-  	#  if @user.preferences[sat.id.to_s] == "1"
-  	#    latlong = "[\"" + sat.tle1 + "\",\"" + sat.tle2 + "\"," + "],"
-  	#    puts latlong
-  	#    args += latlong
-  	#  end
-  	#end
-  	#args += "]"
-  	@body_onload = "javascript:init(" + args + ")"
-    #respond_to do |format|
-    #  format.html {render :file => "./app/views/users/index2.html"}
-    #end
   end
 
   def edit
