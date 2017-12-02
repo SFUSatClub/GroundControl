@@ -12,7 +12,25 @@ $(document).ready(function() {
             attribution: '© OpenStreetMap contributors'
           }).addTo(map);
 
-  var marker = WE.marker([51.5, -0.1]).addTo(map);
-  marker.bindPopup('<b>Hello world!</b>');
+          $(item).find('test_div').text("hello testing");
+
+
+
+          $(".satellites-table > tbody > tr").each(function(index, item)
+          {
+            // var lat = $(item).find(".sat-latitude").text();
+            // var lon = $(item).find(".sat-longitude").text();
+            // var name = $(item).find(".satellite-name").text();
+            // var marker = WE.marker([parseInt(lat, 10), parseInt(lon, 10)]).addTo(map);
+            // marker.bindPopup(name);
+
+
+
+            $(item).find('test_div').text("i_rann_once");
+
+          });
+
+          // var marker = WE.marker([51.5, -0.1]).addTo(map);
+          // marker.bindPopup('<b>Hello world!</b>');
 
 });
