@@ -14,45 +14,52 @@ $(document).ready(function() {
   var marker = WE.marker([51.5, -0.1]).addTo(map);
   marker.bindPopup('<b>Hello world!</b>');
   var i = 0;
+  var markers = [];
+  var done = false;
+  console.log("executed");
   $(".satellites-table > tbody > tr").each(function(index, item)
   {
-    var tleLine1 = $(item).find(".satellite-tle1").text();
-    var tleLine2 = $(item).find(".satellite-tle2").text();
-    console.log(tleLine1);
+  	if (!done) {
+		var tleLine1 = $(item).find(".satellite-tle1").text();
+		var tleLine2 = $(item).find(".satellite-tle2").text();
+		console.log(tleLine1);
 
-    if (tleLine1.length != 0 && tleLine2.length != 0)
-    {
-      // Initialize a satellite record
-      var satrec = satellite.twoline2satrec(tleLine1, tleLine2);
+		if (tleLine1.length != 0 && tleLine2.length != 0)
+		{
+		  // Initialize a satellite record
+		  var satrec = satellite.twoline2satrec(tleLine1, tleLine2);
+		  //  Or you can use a JavaScript Date
+		  var positionAndVelocity = satellite.propagate(satrec, new Date());
 
-      //  Or you can use a JavaScript Date
-      var positionAndVelocity = satellite.propagate(satrec, new Date());
+		  // The position_velocity result is a key-value pair of ECI coordinates.
+		  // These are the base results from which all other coordinates are derived.
+		  var positionEci = positionAndVelocity.position,
+		  velocityEci = positionAndVelocity.velocity;
 
-      // The position_velocity result is a key-value pair of ECI coordinates.
-      // These are the base results from which all other coordinates are derived.
-      var positionEci = positionAndVelocity.position,
-      velocityEci = positionAndVelocity.velocity;
+		  // You will need GMST for some of the coordinate transforms.
+		  // http://en.wikipedia.org/wiki/Sidereal_time#Definition
+		  var gmst = satellite.gstimeFromDate(new Date());
 
-      // You will need GMST for some of the coordinate transforms.
-      // http://en.wikipedia.org/wiki/Sidereal_time#Definition
-      var gmst = satellite.gstimeFromDate(new Date());
+		  var positionGd   = satellite.eciToGeodetic(positionEci, gmst);
 
-      var positionGd   = satellite.eciToGeodetic(positionEci, gmst);
+		  var longitude = positionGd.longitude;
+		  var latitude  = positionGd.latitude;
+		  $(item).find('.sat-longitude').text(longitude);
+		  $(item).find('.sat-latitude').text(latitude);
 
-      var longitude = positionGd.longitude;
-      var latitude  = positionGd.latitude;
-      
-      $(item).find('.sat-longitude').text(longitude);
-      $(item).find('.sat-latitude').text(latitude);
-
-		var name = $(item).find(".satellite-name").text();
-		var marker = WE.marker([latitude, longitude]).addTo(map);
-		marker.bindPopup(name);
-		i++;
-		if (i == 2) {
-			// Equivalent to a break statement in the context of ".each"
-			return false;
+			var name = $(item).find(".satellite-name").text();
+			var marker = WE.marker([latitude, longitude]);
+			markers.push(marker);
+			i++;
+			if (i == 2) {
+				done = true;
+			}
 		}
 	}
   });
+  console.log(markers);
+  for (var j = 0; j < markers.length; j++) {
+  	markers[j].addTo(map);
+  }
+  
 });
