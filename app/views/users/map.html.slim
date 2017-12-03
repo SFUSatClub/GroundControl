@@ -1,18 +1,19 @@
 = javascript_include_tag 'http://www.webglearth.com/v2/api.js'
-div id="earth_div"
-table class="satellites-table"
-  tbody
-    - @satellites.each do |sat|
-      - if @user.preferences[sat.id.to_s] != "1"
-        - next
-      tr
-        td.satellite-name
-          = sat.name
-        td.satellite-category
-          = sat.category
-        td.satellite-tle1.hide-cell
-          = sat.tle1
-        td.satellite-tle2.hide-cell
-          = sat.tle2
-        td.sat-longitude
-        td.sat-latitude
+div.maps-page
+  div#earth_div
+  table class="satellites-table"
+    tbody
+      - @satellites.each do |sat|
+        - if @user.preferences[sat.id.to_s] != "1"
+          - next
+        tr
+          td.satellite-name
+            = sat.name
+          td.satellite-category
+            = sat.category
+          td.satellite-tle1.hide-cell
+            = sat.tle1
+          td.satellite-tle2.hide-cell
+            = sat.tle2
+          td.sat-longitude
+          td.sat-latitude

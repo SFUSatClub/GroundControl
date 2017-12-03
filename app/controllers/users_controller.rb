@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def map
-  	@user = User.find(params[:id])
+  	@user = current_user
   	@satellites = Satellite.all
   end
 
@@ -58,7 +58,7 @@ class UsersController < ApplicationController
     end
 
     def validate_url
-      unless current_user.nil? || params[:id].to_i == current_user.id.to_i
+      unless params[:user_id].to_i == current_user.id.to_i || params[:id].to_i == current_user.id.to_i
         render :file => 'public/422.html'
       end
     end

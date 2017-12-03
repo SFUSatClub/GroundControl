@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  root 'satellites#index'
-
-  # for temporary static pages
-  get  'static_pages/home'
+  root 'static_pages#home'
 
   # for user login/logout
   get    '/login',   to: 'sessions#new'

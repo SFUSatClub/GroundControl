@@ -13,11 +13,13 @@
       /! Collect the nav links, forms, and other content for toggling
       #pages-navbar-collapse-1.collapse.navbar-collapse
         ul.nav.navbar-nav
-
-          li.first: a[id="menu" href="/"] Home
-          li      : a[id="menu" href="/"] All Sat
-          li      : a[id="menu" href="/"] Map
-          li      : a[id="menu" href="/"] About
+          li
+            a#menu href="#{satellites_path}" All Satellites
+          - if current_user.present?
+            li
+              a#menu href="#{user_map_path(current_user)}" Map
+          li
+            a#menu href="/" About
 
         / For user login or displaying current user
         ul.nav.navbar-nav.navbar-right
