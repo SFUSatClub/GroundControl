@@ -1,4 +1,4 @@
-$(".maps-page").ready(function() {
+$(document).on('users#map:loaded', function(){
 	var map = WE.map('earth_div', {
 		center: [0, 0],
 		zoom: 4,
