@@ -2,7 +2,7 @@
 div id="earth_div"
 table class="satellites-table"
   tbody
-    - @satellites.each do |satellite|
+    - @satellites.each do |sat|
       - if @user.preferences[sat.id.to_s] != "1"
         - next
       tr
