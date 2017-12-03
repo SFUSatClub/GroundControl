@@ -62,14 +62,4 @@ class UsersController < ApplicationController
         render :file => 'public/422.html'
       end
     end
-    
-    def satellites_from_prefs
-      query = <<-SQL
-        select *
-        from satellites
-        where user.preferences[sat.id.to_s] = '1'
-      SQL
-      self.find_by_sql(query)
-    end
-
 end
