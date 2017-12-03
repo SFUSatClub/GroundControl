@@ -1,6 +1,6 @@
 $(document).ready(function() {
   var map = WE.map('earth_div', {
-            center: [51.505, -0.09],
+            center: [0, 0],
             zoom: 4,
             dragging: true,
             scrollWheelZoom: true,
@@ -11,8 +11,6 @@ $(document).ready(function() {
           WE.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
             attribution: '© OpenStreetMap contributors'
           }).addTo(map);
-  var marker = WE.marker([51.5, -0.1]).addTo(map);
-  marker.bindPopup('<b>Hello world!</b>');
   var i = 0;
   var markers = [];
   var done = false;
@@ -48,8 +46,7 @@ $(document).ready(function() {
 		  $(item).find('.sat-latitude').text(latitude);
 
 			var name = $(item).find(".satellite-name").text();
-			var marker = WE.marker([latitude, longitude]);
-			markers.push(marker);
+			addMarkerToMap(latitude, longitude, name);
 			i++;
 			if (i == 2) {
 				done = true;
@@ -58,8 +55,13 @@ $(document).ready(function() {
 	}
   });
   console.log(markers);
-  for (var j = 0; j < markers.length; j++) {
-  	markers[j].addTo(map);
-  }
+  /*for (var j = 0; j < markers.length; j++) {
+  	addMarkerToMap(latitude, longitude, name);
+  }*/
   
+  
+  function addMarkerToMap(latitude, longitude, name) {
+  	var marker = WE.marker([latitude, longitude]).addTo(map);
+  	marker.bindPopup(name);
+  }
 });
