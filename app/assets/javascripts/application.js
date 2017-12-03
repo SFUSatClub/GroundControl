@@ -15,4 +15,4 @@
 //= require bootstrap-sprockets	
 //= require turbolinks
 //= require_tree .
-//= require map2
+//= require map
