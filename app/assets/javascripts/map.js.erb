@@ -1,0 +1,63 @@
+$(document).on('users#map:loaded', function(){
+	var map = WE.map('earth_div', {
+		center: [0, 0],
+		zoom: 4,
+		dragging: true,
+		scrollWheelZoom: true,
+		proxyHost: 'http://srtm.webglearth.com/cgi-bin/corsproxy.fcgi?url='
+	});
+
+	//Add baselayer
+	WE.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		attribution: '© OpenStreetMap contributors'
+	}).addTo(map);
+	var i = 0;
+	var markers = [];
+	var done = false;
+	console.log("executed");
+	$(".satellites-table > tbody > tr").each(function(index, item)
+	{
+		if (!done) {
+			var tleLine1 = $(item).find(".satellite-tle1").text();
+			var tleLine2 = $(item).find(".satellite-tle2").text();
+			console.log(tleLine1);
+
+			if (tleLine1.length != 0 && tleLine2.length != 0)
+			{
+				// Initialize a satellite record
+				var satrec = satellite.twoline2satrec(tleLine1, tleLine2);
+				//  Or you can use a JavaScript Date
+				var positionAndVelocity = satellite.propagate(satrec, new Date());
+
+				// The position_velocity result is a key-value pair of ECI coordinates.
+				// These are the base results from which all other coordinates are derived.
+				var positionEci = positionAndVelocity.position,
+				velocityEci = positionAndVelocity.velocity;
+
+				// You will need GMST for some of the coordinate transforms.
+				// http://en.wikipedia.org/wiki/Sidereal_time#Definition
+				var gmst = satellite.gstimeFromDate(new Date());
+
+				var positionGd   = satellite.eciToGeodetic(positionEci, gmst);
+
+				var longitude = positionGd.longitude;
+				var latitude  = positionGd.latitude;
+				$(item).find('.sat-longitude').text(longitude);
+				$(item).find('.sat-latitude').text(latitude);
+
+				var name = $(item).find(".satellite-name").text();
+				addMarkerToMap(latitude, longitude, name);
+				i++;
+				if (i == 2) {
+					done = true;
+				}
+			}
+		}
+	});
+	console.log(markers);
+
+	function addMarkerToMap(latitude, longitude, name) {
+		var marker = WE.marker([latitude, longitude]).addTo(map);
+		marker.bindPopup(name);
+	}
+});
