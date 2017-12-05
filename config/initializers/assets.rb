@@ -16,4 +16,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w( sessions.coffee
                                                   static_pages.coffee
                                                   bootstrap_customized.scss
-                                                  customizations.scss)
+                                                  customizations.scss
+												  
+*.png )
+												  

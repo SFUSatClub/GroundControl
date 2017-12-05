@@ -1,15 +1,18 @@
 .header-box
   nav.navbar.bg-dark.navbar-dark
     .container-fluid
-
+	
       /! May be add a small logo
-	  <%= image_tag("logo.png", :alt => "Satellite Logo"), width: '50px' %>
+	  
       /! Brand and toggle get grouped for better mobile display
       .navbar-header
         button.navbar-toggle.collapsed aria-expanded="false" data-target="#pages-navbar-collapse-1" data-toggle="collapse" type="button"
           span.sr-only Toggle navigation
           span.glyphicon.glyphicon-menu-hamburger
+		  
+		= image_tag("logo.png", size: "30x30", :alt => "Satellite Logo",:class => "style_logo", )  
         a.navbar-brand href="/"  OrbitWatcher
+		
       /! Collect the nav links, forms, and other content for toggling
       #pages-navbar-collapse-1.collapse.navbar-collapse
         ul.nav.navbar-nav

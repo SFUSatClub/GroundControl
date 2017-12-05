@@ -292,3 +292,102 @@ I, [2017-12-04T14:05:46.860062 #2310]  INFO -- : worker=0 spawned pid=2310
 I, [2017-12-04T14:05:46.860503 #2310]  INFO -- : worker=0 ready
 I, [2017-12-04T14:05:46.861511 #2312]  INFO -- : worker=1 spawned pid=2312
 I, [2017-12-04T14:05:46.867258 #2312]  INFO -- : worker=1 ready
+I, [2017-12-04T14:29:38.924380 #8252]  INFO -- : Refreshing Gem list
+I, [2017-12-04T14:29:42.696599 #8252]  INFO -- : listening on addr=/tmp/unicorn.sock fd=12
+I, [2017-12-04T14:29:42.696845 #8252]  INFO -- : worker=0 spawning...
+I, [2017-12-04T14:29:42.698363 #8252]  INFO -- : worker=1 spawning...
+I, [2017-12-04T14:29:42.700401 #8252]  INFO -- : master process ready
+I, [2017-12-04T14:29:42.699094 #8255]  INFO -- : worker=0 spawned pid=8255
+I, [2017-12-04T14:29:42.701767 #8255]  INFO -- : worker=0 ready
+I, [2017-12-04T14:29:42.701013 #8258]  INFO -- : worker=1 spawned pid=8258
+I, [2017-12-04T14:29:42.702210 #8258]  INFO -- : worker=1 ready
+I, [2017-12-04T20:54:20.574743 #8252]  INFO -- : reloading config_file=config/unicorn.rb
+I, [2017-12-04T20:54:20.720916 #8252]  INFO -- : Refreshing Gem list
+I, [2017-12-04T20:54:20.732618 #8252]  INFO -- : done reloading config_file=config/unicorn.rb
+I, [2017-12-04T20:54:20.733860 #8252]  INFO -- : reaped #<Process::Status: pid 8255 exit 0> worker=0
+I, [2017-12-04T20:54:20.735402 #8252]  INFO -- : reaped #<Process::Status: pid 8258 exit 0> worker=1
+I, [2017-12-04T20:54:20.735892 #8252]  INFO -- : master complete
+I, [2017-12-04T20:57:19.651969 #2286]  INFO -- : Refreshing Gem list
+I, [2017-12-04T20:57:24.189718 #2286]  INFO -- : listening on addr=/tmp/unicorn.sock fd=12
+I, [2017-12-04T20:57:24.190034 #2286]  INFO -- : worker=0 spawning...
+I, [2017-12-04T20:57:24.191144 #2286]  INFO -- : worker=1 spawning...
+I, [2017-12-04T20:57:24.192435 #2286]  INFO -- : master process ready
+I, [2017-12-04T20:57:24.192769 #2289]  INFO -- : worker=0 spawned pid=2289
+I, [2017-12-04T20:57:24.194571 #2289]  INFO -- : worker=0 ready
+I, [2017-12-04T20:57:24.194304 #2292]  INFO -- : worker=1 spawned pid=2292
+I, [2017-12-04T20:57:24.194910 #2292]  INFO -- : worker=1 ready
+I, [2017-12-04T21:04:00.982043 #2286]  INFO -- : reaped #<Process::Status: pid 2292 exit 0> worker=1
+I, [2017-12-04T21:04:00.985606 #2286]  INFO -- : reloading config_file=config/unicorn.rb
+I, [2017-12-04T21:04:01.099867 #2286]  INFO -- : Refreshing Gem list
+I, [2017-12-04T21:04:01.113928 #2286]  INFO -- : done reloading config_file=config/unicorn.rb
+I, [2017-12-04T21:04:01.114313 #2286]  INFO -- : reaped #<Process::Status: pid 2289 exit 0> worker=0
+I, [2017-12-04T21:04:01.115734 #2286]  INFO -- : master complete
+I, [2017-12-04T21:05:13.689039 #2272]  INFO -- : Refreshing Gem list
+I, [2017-12-04T21:05:18.117850 #2272]  INFO -- : listening on addr=/tmp/unicorn.sock fd=12
+I, [2017-12-04T21:05:18.118062 #2272]  INFO -- : worker=0 spawning...
+I, [2017-12-04T21:05:18.119004 #2272]  INFO -- : worker=1 spawning...
+I, [2017-12-04T21:05:18.120567 #2272]  INFO -- : master process ready
+I, [2017-12-04T21:05:18.119595 #2275]  INFO -- : worker=0 spawned pid=2275
+I, [2017-12-04T21:05:18.121648 #2275]  INFO -- : worker=0 ready
+I, [2017-12-04T21:05:18.121954 #2278]  INFO -- : worker=1 spawned pid=2278
+I, [2017-12-04T21:05:18.122240 #2278]  INFO -- : worker=1 ready
+I, [2017-12-04T22:37:01.125966 #2272]  INFO -- : reaped #<Process::Status: pid 2275 exit 0> worker=0
+I, [2017-12-04T22:37:01.126387 #2272]  INFO -- : reaped #<Process::Status: pid 2278 exit 0> worker=1
+I, [2017-12-04T22:37:01.126575 #2272]  INFO -- : master complete
+I, [2017-12-04T22:37:53.058736 #2276]  INFO -- : Refreshing Gem list
+I, [2017-12-04T22:37:56.268834 #2276]  INFO -- : listening on addr=/tmp/unicorn.sock fd=12
+I, [2017-12-04T22:37:56.269090 #2276]  INFO -- : worker=0 spawning...
+I, [2017-12-04T22:37:56.270086 #2276]  INFO -- : worker=1 spawning...
+I, [2017-12-04T22:37:56.271749 #2276]  INFO -- : master process ready
+I, [2017-12-04T22:37:56.270731 #2279]  INFO -- : worker=0 spawned pid=2279
+I, [2017-12-04T22:37:56.272601 #2279]  INFO -- : worker=0 ready
+I, [2017-12-04T22:37:56.273237 #2282]  INFO -- : worker=1 spawned pid=2282
+I, [2017-12-04T22:37:56.273459 #2282]  INFO -- : worker=1 ready
+I, [2017-12-04T23:12:55.802164 #2276]  INFO -- : reaped #<Process::Status: pid 2279 exit 0> worker=0
+I, [2017-12-04T23:12:55.803455 #2276]  INFO -- : reaped #<Process::Status: pid 2282 exit 0> worker=1
+I, [2017-12-04T23:12:55.804203 #2276]  INFO -- : reloading config_file=config/unicorn.rb
+I, [2017-12-04T23:12:55.929455 #2276]  INFO -- : Refreshing Gem list
+I, [2017-12-04T23:12:55.942817 #2276]  INFO -- : done reloading config_file=config/unicorn.rb
+I, [2017-12-04T23:12:55.944326 #2276]  INFO -- : master complete
+I, [2017-12-04T23:13:47.572320 #2274]  INFO -- : Refreshing Gem list
+I, [2017-12-04T23:13:50.684919 #2274]  INFO -- : listening on addr=/tmp/unicorn.sock fd=12
+I, [2017-12-04T23:13:50.685121 #2274]  INFO -- : worker=0 spawning...
+I, [2017-12-04T23:13:50.686107 #2274]  INFO -- : worker=1 spawning...
+I, [2017-12-04T23:13:50.687627 #2274]  INFO -- : master process ready
+I, [2017-12-04T23:13:50.686680 #2277]  INFO -- : worker=0 spawned pid=2277
+I, [2017-12-04T23:13:50.688865 #2277]  INFO -- : worker=0 ready
+I, [2017-12-04T23:13:50.688216 #2280]  INFO -- : worker=1 spawned pid=2280
+I, [2017-12-04T23:13:50.689233 #2280]  INFO -- : worker=1 ready
+I, [2017-12-04T23:50:34.586402 #2274]  INFO -- : reaped #<Process::Status: pid 2280 exit 0> worker=1
+I, [2017-12-04T23:50:34.590214 #2274]  INFO -- : reaped #<Process::Status: pid 2277 exit 0> worker=0
+I, [2017-12-04T23:50:34.591133 #2274]  INFO -- : reloading config_file=config/unicorn.rb
+I, [2017-12-04T23:50:34.859667 #2274]  INFO -- : Refreshing Gem list
+I, [2017-12-04T23:50:34.890232 #2274]  INFO -- : done reloading config_file=config/unicorn.rb
+I, [2017-12-04T23:50:34.891531 #2274]  INFO -- : master complete
+I, [2017-12-04T23:51:33.231381 #2278]  INFO -- : Refreshing Gem list
+I, [2017-12-04T23:51:37.426360 #2278]  INFO -- : listening on addr=/tmp/unicorn.sock fd=12
+I, [2017-12-04T23:51:37.426757 #2278]  INFO -- : worker=0 spawning...
+I, [2017-12-04T23:51:37.427742 #2278]  INFO -- : worker=1 spawning...
+I, [2017-12-04T23:51:37.428959 #2278]  INFO -- : master process ready
+I, [2017-12-04T23:51:37.429400 #2281]  INFO -- : worker=0 spawned pid=2281
+I, [2017-12-04T23:51:37.430646 #2281]  INFO -- : worker=0 ready
+I, [2017-12-04T23:51:37.429869 #2284]  INFO -- : worker=1 spawned pid=2284
+I, [2017-12-04T23:51:37.431130 #2284]  INFO -- : worker=1 ready
+I, [2017-12-05T01:14:04.554171 #2278]  INFO -- : reaped #<Process::Status: pid 2281 exit 0> worker=0
+I, [2017-12-05T01:14:04.555187 #2278]  INFO -- : reaped #<Process::Status: pid 2284 exit 0> worker=1
+I, [2017-12-05T01:14:04.555591 #2278]  INFO -- : master complete
+I, [2017-12-05T01:15:32.879091 #2288]  INFO -- : Refreshing Gem list
+I, [2017-12-05T01:15:37.699580 #2288]  INFO -- : listening on addr=/tmp/unicorn.sock fd=12
+I, [2017-12-05T01:15:37.699934 #2288]  INFO -- : worker=0 spawning...
+I, [2017-12-05T01:15:37.700989 #2288]  INFO -- : worker=1 spawning...
+I, [2017-12-05T01:15:37.702635 #2288]  INFO -- : master process ready
+I, [2017-12-05T01:15:37.701588 #2291]  INFO -- : worker=0 spawned pid=2291
+I, [2017-12-05T01:15:37.703636 #2291]  INFO -- : worker=0 ready
+I, [2017-12-05T01:15:37.703987 #2294]  INFO -- : worker=1 spawned pid=2294
+I, [2017-12-05T01:15:37.704257 #2294]  INFO -- : worker=1 ready
+ArgumentError: Already running on PID:2288 (or pid=/tmp/unicorn.pid is stale)
+  /var/lib/gems/2.3.0/gems/unicorn-5.3.1/lib/unicorn/http_server.rb:205:in `pid='
+  /var/lib/gems/2.3.0/gems/unicorn-5.3.1/lib/unicorn/http_server.rb:137:in `start'
+  /var/lib/gems/2.3.0/gems/unicorn-5.3.1/bin/unicorn:126:in `<top (required)>'
+  /usr/local/bin/unicorn:23:in `load'
+  /usr/local/bin/unicorn:23:in `<top (required)>'
