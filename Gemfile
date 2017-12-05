@@ -28,10 +28,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-gem 'slim'
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
-gem 'whenever', :require => false
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -60,7 +56,15 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-
-
-# The unicorn gem
+# Use unicorn for connecting back-end server Nginx
 gem 'unicorn'
+
+# Use slim for samplify HTML Syntax
+gem 'slim'
+
+# Use jquery for dynamic pages updating
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+
+# Use whenever for scheduling
+gem 'whenever', :require => false
