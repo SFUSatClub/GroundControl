@@ -1,5 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+
+* {
+  font-family: 'Nunito', sans-serif;
+}
 
 .navbar {
   background-color: #111;
