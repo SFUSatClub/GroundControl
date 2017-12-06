@@ -127,6 +127,7 @@ Henry
 - set up bootstrap,slim library
 - display lat and lon on the table
 - set up whenever gem for scheduling
+- Setting up pagination for displaying list of satellites
 Nick
 * Setting up vagrant
 - set up nignx server and communication nignx to rails app by unicorn socket
@@ -134,11 +135,12 @@ Nick
 - poster design
 - project requirement
 * Website designs on html, css, bootstrap
+- about page
 Ching
 * Website designs on html, css, bootstrap, logo
 - home / manual page
-* tester for windows website prouction mode
-* Writing Readme/ Project overview
+* tester for windows website production mode
+* Writing Readme
 Darren
 - create the map controller
 * Displaying satellites on maps with given longitude and latitude
