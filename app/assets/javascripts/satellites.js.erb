@@ -1,39 +1,51 @@
 $(document).ready(function() {
+  $('.satellites-table').DataTable();
 
-  var d = new Date();
-  var n = d.getTime();
+  function genLongLats(){
+    var d = new Date();
+    var n = d.getTime();
+    timeSinceTleEpochMinutes = n/60000;
 
-  timeSinceTleEpochMinutes = n/60000;
-
-  $(".satellites-table > tbody > tr").each(function(index, item)
-  {
-    var tleLine1 = $(item).find(".satellite-tle1").text();
-    var tleLine2 = $(item).find(".satellite-tle2").text();
-
-    if (tleLine1.length != 0 && tleLine2.length != 0)
+    $(".satellites-table > tbody > tr").each(function(index, item)
     {
-      // Initialize a satellite record
-      var satrec = satellite.twoline2satrec(tleLine1, tleLine2);
+      var tleLine1 = $(item).find(".satellite-tle1").text();
+      var tleLine2 = $(item).find(".satellite-tle2").text();
 
-      //  Or you can use a JavaScript Date
-      var positionAndVelocity = satellite.propagate(satrec, new Date());
+      if (tleLine1.length != 0 && tleLine2.length != 0)
+      {
+        // Initialize a satellite record
+        var satrec = satellite.twoline2satrec(tleLine1, tleLine2);
 
-      // The position_velocity result is a key-value pair of ECI coordinates.
-      // These are the base results from which all other coordinates are derived.
-      var positionEci = positionAndVelocity.position,
-      velocityEci = positionAndVelocity.velocity;
+        //  Or you can use a JavaScript Date
+        var positionAndVelocity = satellite.propagate(satrec, new Date());
 
-      // You will need GMST for some of the coordinate transforms.
-      // http://en.wikipedia.org/wiki/Sidereal_time#Definition
-      var gmst = satellite.gstimeFromDate(new Date());
+        // The position_velocity result is a key-value pair of ECI coordinates.
+        // These are the base results from which all other coordinates are derived.
+        var positionEci = positionAndVelocity.position,
+        velocityEci = positionAndVelocity.velocity;
 
-      var positionGd   = satellite.eciToGeodetic(positionEci, gmst);
+        // You will need GMST for some of the coordinate transforms.
+        // http://en.wikipedia.org/wiki/Sidereal_time#Definition
+        var gmst = satellite.gstimeFromDate(new Date());
 
-      var longitude = positionGd.longitude;
-      var latitude  = positionGd.latitude;
+        var positionGd   = satellite.eciToGeodetic(positionEci, gmst);
 
-      $(item).find('.sat-longitude').text(longitude);
-      $(item).find('.sat-latitude').text(latitude);
-    }
+        var longitude = positionGd.longitude;
+        var latitude  = positionGd.latitude;
+
+        $(item).find('.sat-longitude').text(longitude);
+        $(item).find('.sat-latitude').text(latitude);
+      }
+    });
+  }
+
+  $(".satellites-table").ready( function(){
+    genLongLats();
   });
+
+  $(".satellites-table").on('draw.dt', function () {
+    genLongLats();
+  } );
+
+
 })

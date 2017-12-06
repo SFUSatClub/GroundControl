@@ -2,23 +2,25 @@ div.maps-page
   div#earth_div
   hr
   table.table.table-hover.satellites-table
-    tr
-      th Name
-      th Category
-      th.hide-cell TLE1
-      th.hide-cell TLE2
-      th Longitude
-      th Latitude
-    - @satellites.each do |satellite|
-      - if @user.preferences[satellite.id.to_s] == "1"
-        tr
-          td.satellite-name
-            = satellite.name
-          td.satellite-category
-            = satellite.category
-          td.satellite-tle1.hide-cell
-            = satellite.tle1
-          td.satellite-tle2.hide-cell
-            = satellite.tle2
-          td.sat-longitude
-          td.sat-latitude
+    thead
+      tr
+        th Name
+        th Category
+        th.hide-cell TLE1
+        th.hide-cell TLE2
+        th Longitude
+        th Latitude
+    tbody
+      - @satellites.each do |satellite|
+        - if @user.preferences[satellite.id.to_s] == "1"
+          tr
+            td.satellite-name
+              = satellite.name
+            td.satellite-category
+              = satellite.category
+            td.satellite-tle1.hide-cell
+              = satellite.tle1
+            td.satellite-tle2.hide-cell
+              = satellite.tle2
+            td.sat-longitude
+            td.sat-latitude
