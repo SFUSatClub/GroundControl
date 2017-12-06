@@ -5,13 +5,14 @@
     table.table.table-hover.satellites-table
       thead
         tr
-          th Preference
+          th Favorite
           th Name
           th Category
           th.hide-cell TLE1
           th.hide-cell TLE2
           th Longitude
           th Latitude
+          th Height
       tbody
         = f.fields_for :preferences do |pref|
           - @satellites.each do |sat|
@@ -28,6 +29,8 @@
                 = sat.tle2
               td.sat-longitude
               td.sat-latitude
+              td.sat-height
+
   .panel-footer.buttons
     = f.submit "Update Favorites" , class: 'btn btn-success pull-right', data: { disable_with: "Submitting..." }
     .clearfix
