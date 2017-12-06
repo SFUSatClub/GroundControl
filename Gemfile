@@ -56,6 +56,8 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+gem 'underscore-rails'
+gem 'gmaps4rails'
 # Use unicorn for connecting back-end server Nginx
 gem 'unicorn'
 
