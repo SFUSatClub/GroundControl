@@ -73,6 +73,8 @@ On the Backend there is a Rails rake task running that will fetch new data from 
 The following technology was used for the creation of our website
 #Application Backend
 
+![alt text](https://csil-git1.cs.surrey.sfu.ca/mhzhao/CMPT470Project/uploads/6775968d9f02282267b7f24b9d759a75/backenddrawing.png "Backend Drawing")
+
 Oracle Virtualbox + Vagrant
 We virtualize a Web Server using Virtualbox and Vagrant so the whole team have the same ubuntu environment to work with. Orcale virtualbox and vagrant is chosen because we are more familiar with them after the exercises done already.
 
