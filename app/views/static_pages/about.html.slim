@@ -1,0 +1,50 @@
+h2 Orbit Watcher
+
+p Orbit Watcher allows users to view the positions of satellites on a map and subscribe to their favourites.
+br
+.container-box-about
+  p CMPT470 Group 8 Developers:
+  ul
+    li Dmitri Dzioura, dda31
+    li Nicholas Liang, nla45
+    li Viresh Soedhwa, vsoedhwa
+    li Darren Venables, dvenable
+    li Ching Wang, cwa144
+    li Henry Zhao, mhzhao
+
+h3#Application Backend
+br
+h4#descrip_title Oracle Virtualbox + Vagrant
+p#descrip_text We virtualize a Web Server using Virtualbox and Vagrant so the whole team have the same ubuntu environment to work with.
+br
+h4#descrip_title Nginx + Chef + Unicorn
+p#descrip_text  We use the chef script to set up a Nginx Server and listen on the Unicorn socket.
+br
+h4#descrip_title Rails
+p#descrip_text  We use Rails as a Web Framework to do rapid web development.
+br
+h4#descrip_title Scheduling by Whenever gem + CRON
+p#descrip_text  We use whenever gem to schedule in order to fetch all TLE from Celestrak Website to databases at 12:00 am everyday
+br
+h4#descrip_title Security / bcrypt
+p#descrip_text  We use bcrypt to secure our user password by hashing.
+br
+h4#descrip_title PostgreSQL Datebase
+p#descrip_text  We use PostgreSQL becauseit is one of the world’s most advanced open source database
+br
+h3#Application Frontend
+br
+h4#descrip_title WebGL Earth / OpenStreetMap
+p#descrip_text  We use WebGL Earth and OpenStreetMap to show the users the position of the satellites on the map
+br
+h4#descrip_title Bootstrap
+p#descrip_text  We use Bootstrap to design the UI and provide a suitable view to both mobile and desktop browser
+br
+h4#descrip_title Jquery
+p#descrip_text  We use Jquery to update the latitude and longitude of the satellites and pin it into the map
+br
+h4#descrip_title Slim Gem
+p#descrip_text  We use Slim to shorten the normal HTML format
+br
+h4#descrip_title Puma Application Server
+p#descrip_text  We use Puma server for development process of the rails web application.
