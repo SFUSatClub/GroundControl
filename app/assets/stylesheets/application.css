@@ -12,6 +12,7 @@
  *
  *= require bootstrap_customized
  *= require customizations
+ *= require_tree ../../../vendor/assets/.
  *= require_tree .
  *= require_self
  */

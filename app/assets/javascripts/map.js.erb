@@ -1,5 +1,6 @@
 $(document).ready(function() {
-	$("#earth_div").ready( function(){
+	if( $('#earth_div').length > 0)
+	{
 		var map = WE.map('earth_div', {
 			center: [0, 0],
 			zoom: 4,
@@ -23,10 +24,10 @@ $(document).ready(function() {
 				addMarkerToMap(lat, long, name)
 			}
 		});
+	}
 
-		function addMarkerToMap(latitude, longitude, name) {
-			var marker = WE.marker([latitude, longitude]).addTo(map);
-			marker.bindPopup(name);
-		}
-	});
+	function addMarkerToMap(latitude, longitude, name) {
+		var marker = WE.marker([latitude, longitude]).addTo(map);
+		marker.bindPopup(name);
+	}
 })

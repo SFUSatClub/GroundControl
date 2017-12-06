@@ -1,3 +1,33 @@
-body
-  p Current user is: #{current_user.name}
-  p Email: #{current_user.email}
+- console
+h1 Hello, #{current_user.name}
+
+.panel-head
+  h2 Your Favorite Satellites
+.panel-body
+  - if current_user.preferences == {} || !(current_user.preferences.has_value?("1"))
+
+    p It looks like you don't have any favorite satellites set, visit #{link_to "All Satellites", satellites_path} to add some!
+  - else
+    table.table.table-hover.satellites-table
+      thead
+        tr
+          th Name
+          th Category
+          th.hide-cell TLE1
+          th.hide-cell TLE2
+          th Longitude
+          th Latitude
+      tbody
+        - @satellites.each do |satellite|
+          - if @user.preferences[satellite.id.to_s] == "1"
+            tr
+              td.satellite-name
+                = satellite.name
+              td.satellite-category
+                = satellite.category
+              td.satellite-tle1.hide-cell
+                = satellite.tle1
+              td.satellite-tle2.hide-cell
+                = satellite.tle2
+              td.sat-longitude
+              td.sat-latitude

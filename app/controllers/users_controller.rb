@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @satellites = Satellite.all
   end
 
   def create
@@ -58,7 +59,13 @@ class UsersController < ApplicationController
     end
 
     def validate_url
-      unless params[:user_id].to_i == current_user.id.to_i || params[:id].to_i == current_user.id.to_i
+      if params[:id].nil?
+        @user = nil
+      else
+        @user = User.find(params[:id])
+      end
+
+      if current_user != @user
         render :file => 'public/422.html'
       end
     end
