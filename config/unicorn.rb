@@ -10,4 +10,4 @@ listen "/tmp/unicorn.sock", :backlog => 64
 
 stderr_path "#{shared_dir}/unicorn.stderr.log"
 stdout_path "#{shared_dir}/unicorn.stdout.log"
-pid "#{shared_dir}/unicorn.pid"
+pid "/tmp/unicorn.pid"

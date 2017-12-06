@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record
@@ -29,14 +28,13 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-gem 'slim'
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
-gem 'whenever', :require => false
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'bootstrap-sass', '~> 3.3.7'
+
+# Used by scraper
+gem 'rest-client', '~> 2.0.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -60,7 +58,15 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'underscore-rails'
 gem 'gmaps4rails'
-
-
-# The unicorn gem
+# Use unicorn for connecting back-end server Nginx
 gem 'unicorn'
+
+# Use slim for samplify HTML Syntax
+gem 'slim'
+
+# Use jquery for dynamic pages updating
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+
+# Use whenever for scheduling
+gem 'whenever', :require => false

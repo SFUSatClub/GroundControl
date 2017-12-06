@@ -1,22 +1,27 @@
-table.table.table-hover
+table.table.table-hover.satellites-table
   tr
-    th Favorite
+    th Preference
     th Name
     th Category
-    th TLE1
-    th TLE2
+    th.hide-cell TLE1
+    th.hide-cell TLE2
+    th Longitude
+    th Latitude
   = form_for @user do |f|
     = f.fields_for :preferences do |pref|
       - @satellites.each do |sat|
         tr
-          td
+          td.satellite-preference
             = pref.check_box(sat.id, {checked: @user.preferences[sat.id.to_s] == "1"})
-          td
+          td.satellite-name
             = sat.name
-          td
+          td.satellite-category
             = sat.category
-          td
+          td.satellite-tle1.hide-cell
             = sat.tle1
-          td
+          td.satellite-tle2.hide-cell
             = sat.tle2
+          td.sat-longitude
+          td.sat-latitude
+
     = f.submit
