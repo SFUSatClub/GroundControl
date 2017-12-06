@@ -42,11 +42,22 @@ cookbook_file "nginx-default" do
   path "/etc/nginx/sites-available/default"
 end
 
+# database Configuraion
+
+execute 'run rake job' do
+  command 'RAILS_ENV=production rake fetch_api:seed_db'
+  cwd '/home/ubuntu/project/'
+  user 'ubuntu'
+end
   # Final bundle update
 execute 'update all bundle' do
   command   'bundle install'
   cwd       app_dir
   user      "ubuntu"
+end
+
+execute 'get_js' do
+  command 'rails g gmaps4rails:copy_coffee'
 end
 
 # Database Configuraion
