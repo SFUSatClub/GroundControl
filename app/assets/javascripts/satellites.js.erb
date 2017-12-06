@@ -2,16 +2,35 @@ $(document).ready(function() {
   var table = $('.satellites-table').DataTable();
   genLongLats();
 
-
   function genLongLats(){
     $(".satellites-table > tbody > tr").each(function(index, item)
     {
       var tleLine1 = $(item).find(".satellite-tle1").text();
       var tleLine2 = $(item).find(".satellite-tle2").text();
 
+      if ("geolocation" in navigator) {
+        /* geolocation is available */
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var observerGd = {
+            longitude: position.coords.latitude * Math.PI/180,
+            latitude: position.coords.longitude * Math.PI/180,
+            height: position.coords.altitude
+          };
+        });
+      }
+
+      // using default SFU coordinates
+      if (typeof observerGd == "undefined") {
+        /* geolocation IS NOT available */
+        var observerGd = {
+          longitude: 49.2771496 * Math.PI/180,
+          latitude: -122.9136901 * Math.PI/180,
+          height: 331
+        };
+      }
+
       if (tleLine1.length != 0 && tleLine2.length != 0)
       {
-
         // Initialize a satellite record
         var satrec = satellite.twoline2satrec(tleLine1, tleLine2);
 
@@ -27,16 +46,22 @@ $(document).ready(function() {
         // http://en.wikipedia.org/wiki/Sidereal_time#Definition
         var gmst = satellite.gstimeFromDate(new Date());
 
-        var positionGd   = satellite.eciToGeodetic(positionEci, gmst);
+        var positionGd = satellite.eciToGeodetic(positionEci, gmst);
+        var positionEcf = satellite.eciToEcf(positionEci, gmst);
 
         var longitude = positionGd.longitude;
-        var latitude  = positionGd.latitude;
+        var latitude = positionGd.latitude;
 
-        var longitudeStr = satellite.degreesLong(longitude),
-        latitudeStr  = satellite.degreesLat(latitude);
+        var longitudeStr = satellite.degreesLong(longitude);
+        var latitudeStr = satellite.degreesLat(latitude);
+        var lookAngles = satellite.ecfToLookAngles(observerGd, positionEcf);
 
         $(item).find('.sat-longitude').text(longitudeStr);
         $(item).find('.sat-latitude').text(latitudeStr);
+        $(item).find('.sat-height').text(positionGd.height);
+        $(item).find('.sat-azimuth').text(lookAngles.azimuth);
+        $(item).find('.sat-elevation').text(lookAngles.elevation);
+        $(item).find('.sat-rangesat').text(lookAngles.rangeSat);
       }
     });
   }
@@ -71,6 +96,4 @@ $(document).ready(function() {
         }
       });
    });
-
-
 })

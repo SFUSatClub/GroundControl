@@ -14,6 +14,10 @@
         th.hide-cell TLE2
         th Longitude
         th Latitude
+        th Height
+        th Azimuth
+        th Elevation
+        th Range Sat
     tbody
       - @satellites.each do |satellite|
         tr
@@ -27,6 +31,11 @@
             = satellite.tle2
           td.sat-longitude
           td.sat-latitude
+          td.sat-height
+          td.sat-azimuth
+          td.sat-elevation
+          td.sat-rangesat
+  sub &#9888; During calculation of azimuth, elevation, and rangesat, your current GPS location will be used as the observer to the satellites. If you choose not to provide this information or it is imcompatible with your browser, it will default to the GPS coordinates of Simon Fraser University, Burnaby Campus in British Columbia, Canada.
 
 - if current_user.present?
   .panel-footer.buttons
