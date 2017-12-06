@@ -1,13 +1,19 @@
 $(document).ready(function() {
-	if( $('#earth_div').length > 0)
-	{
-		var map = WE.map('earth_div', {
-			center: [0, 0],
-			zoom: 4,
-			dragging: true,
-			scrollWheelZoom: true,
-			proxyHost: 'http://srtm.webglearth.com/cgi-bin/corsproxy.fcgi?url='
-		});
+
+	function addMarkerToMap(latitude, longitude, name, map) {
+		var marker = WE.marker([latitude, longitude]).addTo(map);
+		marker.bindPopup(name);
+	}
+
+	if( $('#earth_div').length > 0)	{
+		$('#earth_div').ready(function() {
+			var map = WE.map('earth_div', {
+				center: [49.2727852,-122.9127996],
+				zoom: 4,
+				dragging: true,
+				scrollWheelZoom: true,
+				proxyHost: 'http://srtm.webglearth.com/cgi-bin/corsproxy.fcgi?url='
+			});
 
 		//Add baselayer
 		WE.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -21,13 +27,9 @@ $(document).ready(function() {
 			var lat = $(item).children('td.sat-latitude').text()
 			if (long.length > 0 && lat.length > 0)
 			{
-				addMarkerToMap(lat, long, name)
+				addMarkerToMap(lat, long, name, map)
 			}
 		});
-	}
-
-	function addMarkerToMap(latitude, longitude, name) {
-		var marker = WE.marker([latitude, longitude]).addTo(map);
-		marker.bindPopup(name);
+	});
 	}
 })

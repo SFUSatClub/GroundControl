@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     params[:user].delete(:password) if params[:user][:password].blank?
     if  @user.update user_params
       notice = "You have updated your favorites."
-      flash[:notice] = "#{notice}"
+      flash[:success] = "#{notice}"
       redirect_back(fallback_location: root_path)
     else
       flash[:warning] = "Something went wrong, we could not save your preferences."
