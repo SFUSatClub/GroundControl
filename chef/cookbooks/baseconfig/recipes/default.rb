@@ -29,11 +29,15 @@ apt_package %w(ruby-full nodejs libxslt1-dev libxml2-dev)
 
 # Rails Configuration
 gem_package 'bundler'
-gem_package	'rails'
-gem_package	'unicorn'
+gem_package 'rails'
+gem_package 'unicorn'
+cookbook_file "unicorn_CMPT470Project" do
+  mode    "0755"
+  path    "/etc/init.d/unicorn_CMPT470Project"
+end
 
 # Nginx Server Configuration
-apt_package 'nginx'
+package 'nginx'
 cookbook_file "nginx-default" do
   path "/etc/nginx/sites-available/default"
 end
@@ -62,14 +66,15 @@ end
 execute 'precompile asset' do
   command   'RAILS_ENV=production rake assets:precompile'
   cwd       app_dir
-  user      'ubuntu'
+  user      "ubuntu"
 end
 
 # start up unicorn
-execute 'start unicorn' do
-	command 	'bundle exec unicorn -c config/unicorn.rb -E production -D'
-	cwd       app_dir
-	user      'ubuntu'
+execute 'unicorn_CMPT470Project' do
+  command   'sudo update-rc.d unicorn_CMPT470Project defaults'
+end
+service 'unicorn_CMPT470Project' do
+  action :start
 end
 # reload nginx
 service "nginx" do
