@@ -59,10 +59,13 @@ class UsersController < ApplicationController
     end
 
     def validate_url
-      if params[:id].nil?
-        @user = nil
-      else
+      # differentiate between id and user_id
+      if params[:id]
         @user = User.find(params[:id])
+      elsif params[:user_id]
+        @user = User.find(params[:user_id])
+      else
+        @user = nil
       end
 
       if current_user != @user
