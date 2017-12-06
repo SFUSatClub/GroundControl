@@ -2,15 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-h1 {
+.home-header {
 	font-size: 550%;
-  	color: black;
+  color: black;
 }
-
-p {
-    font-size: 100%;
-}
-
-button {
-	font-size: 400%;
+.text {
+  font-size: 150%;
 }

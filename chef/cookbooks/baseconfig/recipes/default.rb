@@ -49,7 +49,6 @@ execute 'update all bundle' do
   user      "ubuntu"
 end
 
-
 # Database Configuraion
 execute 'add whenever job to cron' do
   command   'RAILS_ENV=production whenever --update-crontab'
@@ -77,8 +76,7 @@ end
 service 'unicorn_CMPT470Project' do
   action :start
 end
-
 # reload nginx
 service "nginx" do
-  action :restart
+  action  :restart
 end
