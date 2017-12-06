@@ -1,29 +1,33 @@
-table.table.table-hover.satellites-table
-  thead
-    tr
-      th Preference
-      th Name
-      th Category
-      th.hide-cell TLE1
-      th.hide-cell TLE2
-      th Longitude
-      th Latitude
-  tbody
-    = form_for @user do |f|
-      = f.fields_for :preferences do |pref|
-        - @satellites.each do |sat|
-          tr
-            td.satellite-preference
-              = pref.check_box(sat.id, {checked: @user.preferences[sat.id.to_s] == "1"})
-            td.satellite-name
-              = sat.name
-            td.satellite-category
-              = sat.category
-            td.satellite-tle1.hide-cell
-              = sat.tle1
-            td.satellite-tle2.hide-cell
-              = sat.tle2
-            td.sat-longitude
-            td.sat-latitude
-
-      = f.submit
+= form_for @user do |f|
+  .panel-heading
+   h1 Updating #{@user.name}'s Favorites
+  .panel-body
+    table.table.table-hover.satellites-table
+      thead
+        tr
+          th Preference
+          th Name
+          th Category
+          th.hide-cell TLE1
+          th.hide-cell TLE2
+          th Longitude
+          th Latitude
+      tbody
+        = f.fields_for :preferences do |pref|
+          - @satellites.each do |sat|
+            tr
+              td.satellite-preference
+                = pref.check_box(sat.id, {checked: @user.preferences[sat.id.to_s] == "1"})
+              td.satellite-name
+                = sat.name
+              td.satellite-category
+                = sat.category
+              td.satellite-tle1.hide-cell
+                = sat.tle1
+              td.satellite-tle2.hide-cell
+                = sat.tle2
+              td.sat-longitude
+              td.sat-latitude
+  .panel-footer.buttons
+    = f.submit "Update Favorites" , class: 'btn btn-success pull-right', data: { disable_with: "Submitting..." }
+    .clearfix

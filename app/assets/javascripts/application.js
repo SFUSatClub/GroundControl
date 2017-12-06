@@ -16,5 +16,4 @@
 //= require_tree ../../../vendor/assets/DataTables/.
 //= require_tree ../../../vendor/assets/.
 //= require bootstrap-sprockets
-//= require turbolinks
 //= require_tree .
