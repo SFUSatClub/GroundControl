@@ -4,10 +4,6 @@ $(document).ready(function() {
 
 
   function genLongLats(){
-    var d = new Date();
-    var n = d.getTime();
-    timeSinceTleEpochMinutes = n/60000;
-
     $(".satellites-table > tbody > tr").each(function(index, item)
     {
       var tleLine1 = $(item).find(".satellite-tle1").text();
@@ -15,6 +11,7 @@ $(document).ready(function() {
 
       if (tleLine1.length != 0 && tleLine2.length != 0)
       {
+
         // Initialize a satellite record
         var satrec = satellite.twoline2satrec(tleLine1, tleLine2);
 
@@ -35,8 +32,11 @@ $(document).ready(function() {
         var longitude = positionGd.longitude;
         var latitude  = positionGd.latitude;
 
-        $(item).find('.sat-longitude').text(longitude);
-        $(item).find('.sat-latitude').text(latitude);
+        var longitudeStr = satellite.degreesLong(longitude),
+        latitudeStr  = satellite.degreesLat(latitude);
+
+        $(item).find('.sat-longitude').text(longitudeStr);
+        $(item).find('.sat-latitude').text(latitudeStr);
       }
     });
   }
@@ -49,6 +49,7 @@ $(document).ready(function() {
     genLongLats();
   });
 
+  var regenLongLat = setInterval(genLongLats,1000);
 
   $(".edit_user").on('submit', function(e){
     var $form = $(this);
